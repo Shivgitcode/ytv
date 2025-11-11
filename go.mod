@@ -1,4 +1,4 @@
-module github.com/shivgitcode/ytv
+module github.com/Shivgitcode/ytv
 
 go 1.24.5
 

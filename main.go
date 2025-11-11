@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/shivgitcode/ytv/cmd"
+	"github.com/Shivgitcode/ytv/cmd"
 )
 
 
