@@ -1,4 +1,4 @@
-module github.com/shivgitcode/youtubeview
+module github.com/shivgitcode/ytv
 
 go 1.24.5
 

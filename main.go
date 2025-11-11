@@ -3,14 +3,21 @@ package main
 import (
 	"fmt"
 	"os"
-	"github.com/shivgitcode/youtubeview/cmd"
+	"github.com/shivgitcode/ytv/cmd"
 )
 
 
 func main(){
-	if len(os.Args)<2{
+	if len(os.Args)<2 && os.Args[1]!="ytv"{
 		fmt.Print("The list of available commands are\nstream\ndownload")
 		return
+	}
+	if os.Args[1]=="ytv"{
+		fmt.Println("Welcome to ytv")
+		fmt.Println("Basic Commands ")
+		fmt.Println("ytv stream <videourl> ")
+		fmt.Println("ytv stream --speed <videourl>")
+		fmt.Println("ytv download <videourl>")
 	}
 
 	command:=os.Args[1]

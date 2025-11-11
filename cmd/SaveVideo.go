@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"github.com/shivgitcode/youtubeview/internals"
+	"github.com/shivgitcode/ytv/internals"
 	"strings"
 	"time"
 
