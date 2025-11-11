@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"shivgitcode/youtubeview/cmd"
+	"github.com/shivgitcode/youtubeview/cmd"
 )
 
 

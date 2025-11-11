@@ -3,7 +3,7 @@ package cmd
 import (
 	"flag"
 	"fmt"
-	"shivgitcode/youtubeview/internals"
+	"github.com/shivgitcode/youtubeview/internals"
 	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
