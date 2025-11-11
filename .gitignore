@@ -1,0 +1,61 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Output of `go build`
+/bin/
+/build/
+/dist/
+/out/
+*.out
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Dependency directories (if any vendored)
+vendor/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+*.cache
+
+# Go coverage and test output
+*.coverprofile
+coverage.out
+
+# Environment and config files
+.env
+.env.local
+.env.development
+.env.production
+
+# App-specific configs
+config.json
+.qv/
+.qv_config/
+*.db
+
+# GoReleaser build artifacts
+dist/
+artifacts/
+
+# GitHub workflow temp files
+*.sig
+*.tar.gz
+*.zip
+ytv
+youtubeview
