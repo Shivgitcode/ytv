@@ -7,9 +7,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"github.com/Shivgitcode/ytv/internals"
 	"strings"
 	"time"
+
+	"github.com/AlecAivazis/survey/v2"
+	"github.com/Shivgitcode/ytv/internals"
 
 	"github.com/schollz/progressbar/v3"
 )
@@ -25,7 +27,7 @@ type YTDLPProgress struct {
 
 func SaveVideo(values []string) {
 	saveCmd := flag.NewFlagSet("download", flag.ExitOnError)
-	qualityFlag := saveCmd.String("quality", "720p", "To tell the cli in which quality you want to stream the video")
+	qualityFlag := saveCmd.Bool("quality",false,"this is to select download quality")
 
 	err := saveCmd.Parse(values)
 	internals.Check(err)
@@ -56,23 +58,40 @@ func SaveVideo(values []string) {
 		fmt.Println("Flag should come before url")
 		return
 	}
+	quality:="360p"
+
+	if *qualityFlag{
+		options:=&survey.Select{
+			Message: "Choose quality",
+			Options: []string{
+				"360p",
+				"480p",
+				"720p",
+				"1080p",
+			},
+
+		}
+		survey.AskOne(options,&quality)
+	}
 
 	cm2:=exec.Command("yt-dlp","--print","filename","-o",correctFilePath,videoUrl)
 
 	filename,_:=cm2.Output()
 
 	bar := progressbar.NewOptions(-1,
-		progressbar.OptionSetDescription("Downloading..."),
+		progressbar.OptionSetDescription("\x1b[34mDownloading...\x1b[0m"),
 		progressbar.OptionSpinnerType(14),
+		progressbar.OptionEnableColorCodes(true),
 		progressbar.OptionThrottle(100*time.Millisecond),
 		progressbar.OptionClearOnFinish(),
+		
 	)
 
 	// ✅ Start yt-dlp
 	cm := exec.Command("yt-dlp",
 		"--newline",
 		"--progress",
-		"-f", "best",
+		"-f", internals.QualityToFormat(*qualityFlag,quality),
 		"-o", correctFilePath,
 		videoUrl,
 	)

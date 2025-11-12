@@ -3,21 +3,22 @@ package main
 import (
 	"fmt"
 	"os"
+
 	"github.com/Shivgitcode/ytv/cmd"
+	"github.com/common-nighthawk/go-figure"
 )
 
 
-func main(){
-	if len(os.Args)<2 && os.Args[1]!="ytv"{
-		fmt.Print("The list of available commands are\nstream\ndownload")
+func main() {
+	if len(os.Args) < 2 {
+		figure.NewFigure("YTV", "slant", true).Print()
+		fmt.Println("Welcome to YTV - Your CLI YouTube Companion!")
+		fmt.Println("\nUsage: ytv <command> [arguments]")
+		fmt.Println("\nAvailable commands:")
+		fmt.Println("  stream   : Stream a YouTube video.")
+		fmt.Println("  download : Download a YouTube video.")
+		fmt.Println("  playlist : Download a YouTube playlist.")
 		return
-	}
-	if os.Args[1]=="ytv"{
-		fmt.Println("Welcome to ytv")
-		fmt.Println("Basic Commands ")
-		fmt.Println("ytv stream <videourl> ")
-		fmt.Println("ytv stream --speed <videourl>")
-		fmt.Println("ytv download <videourl>")
 	}
 
 	command:=os.Args[1]
@@ -28,6 +29,11 @@ func main(){
 		cmd.StreamVideo(args)
 	case "download":
 		cmd.SaveVideo(args)
+	case "playlist":
+		cmd.SavePlaylist(args)
+	default:
+		fmt.Println("availaible commands\nstream\ndownload\nplaylist")
 	}
+
 
 }
